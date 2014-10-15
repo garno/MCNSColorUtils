@@ -25,30 +25,29 @@
 // ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 
-#import "UIColor+MCUIColorsUtils.h"
+#import "NSColor+MCNSColorsUtils.h"
 
-
-@implementation UIColor (MCUIColorsUtils)
+@implementation NSColor (MCNSColorsUtils)
 
 //-----------------------------------------------------------------------------
 #pragma mark methods for modifying colors
 //-----------------------------------------------------------------------------
 
 
-- (UIColor *) colorWithMultiplier:(CGFloat) multiplier {
+- (NSColor *) colorWithMultiplier:(CGFloat) multiplier {
     CGFloat * components = (CGFloat *)CGColorGetComponents(self.CGColor);
 
-    return [UIColor colorWithRed:components[0] * multiplier green:components[1] * multiplier blue:components[2] * multiplier alpha:components[3]];
+    return [NSColor colorWithRed:components[0] * multiplier green:components[1] * multiplier blue:components[2] * multiplier alpha:components[3]];
 }
 
-+ (UIColor *) colorForHex:(NSString *)hexColor {
++ (NSColor *) colorForHex:(NSString *)hexColor {
 	hexColor = [[hexColor stringByTrimmingCharactersInSet:
 				 [NSCharacterSet whitespaceAndNewlineCharacterSet]
                  ] uppercaseString];
 
     // String should be 6 or 7 characters if it includes '#'
     if ([hexColor length] < 6)
-		return [UIColor blackColor];
+		return [NSColor blackColor];
 
     // strip # if it appears
     if ([hexColor hasPrefix:@"#"])
@@ -57,7 +56,7 @@
     // if the value isn't 6 characters at this point return
     // the color black
     if ([hexColor length] != 6)
-        return [UIColor blackColor];
+        return [NSColor blackColor];
 
     // Separate into r, g, b substrings
     NSRange range;
@@ -78,58 +77,58 @@
     [[NSScanner scannerWithString:gString] scanHexInt:&g];
     [[NSScanner scannerWithString:bString] scanHexInt:&b];
 
-    return [UIColor colorWithRed:((float) r / 255.0f)
+    return [NSColor colorWithRed:((float) r / 255.0f)
                            green:((float) g / 255.0f)
                             blue:((float) b / 255.0f)
                            alpha:1.0f];
 
 }
 
-+ (UIColor *)colorWithGray:(CGFloat)gray {
-    return [UIColor colorWithRed:gray  green:gray  blue:gray  alpha:1.0f];
++ (NSColor *)colorWithGray:(CGFloat)gray {
+    return [NSColor colorWithRed:gray  green:gray  blue:gray  alpha:1.0f];
 }
 
-+ (UIColor *)colorWithGray:(CGFloat)gray alpha:(CGFloat)alpha {
-    return [UIColor colorWithRed:gray  green:gray  blue:gray  alpha:alpha];
++ (NSColor *)colorWithGray:(CGFloat)gray alpha:(CGFloat)alpha {
+    return [NSColor colorWithRed:gray  green:gray  blue:gray  alpha:alpha];
 }
 
-+ (UIColor *)colorWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue {
-    return [UIColor colorWithRed:red green:green blue:blue alpha:1.0f];
++ (NSColor *)colorWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue {
+    return [NSColor colorWithRed:red green:green blue:blue alpha:1.0f];
 }
 
-+ (UIColor *)colorWithIntegerRed:(NSUInteger)red green:(NSUInteger)green blue:(NSUInteger)blue {
-    return [UIColor colorWithRed:red/255.0f green:green/255.0f blue:blue/255.0f alpha:1.0f];
++ (NSColor *)colorWithIntegerRed:(NSUInteger)red green:(NSUInteger)green blue:(NSUInteger)blue {
+    return [NSColor colorWithRed:red/255.0f green:green/255.0f blue:blue/255.0f alpha:1.0f];
 }
 
-+ (UIColor *)colorWithIntegerRed:(NSUInteger)red green:(NSUInteger)green blue:(NSUInteger)blue alpha:(CGFloat)alpha {
-    return [UIColor colorWithRed:red/255.0f green:green/255.0f blue:blue/255.0f alpha:alpha];
++ (NSColor *)colorWithIntegerRed:(NSUInteger)red green:(NSUInteger)green blue:(NSUInteger)blue alpha:(CGFloat)alpha {
+    return [NSColor colorWithRed:red/255.0f green:green/255.0f blue:blue/255.0f alpha:alpha];
 }
 
-+ (UIColor *)colorWithIntegerGray:(NSUInteger)gray {
-    return [UIColor colorWithGray:gray/255.0f];
++ (NSColor *)colorWithIntegerGray:(NSUInteger)gray {
+    return [NSColor colorWithGray:gray/255.0f];
 }
 
-+ (UIColor *)colorWithIntegerGray:(NSUInteger)gray alpha:(CGFloat)alpha {
-    return [UIColor colorWithGray:gray/255.0f alpha:alpha];
++ (NSColor *)colorWithIntegerGray:(NSUInteger)gray alpha:(CGFloat)alpha {
+    return [NSColor colorWithGray:gray/255.0f alpha:alpha];
 }
 
-+ (UIColor *)colorWithHexRGB:(NSUInteger)hexRGB {
-    return [UIColor colorWithIntegerRed:((hexRGB & 0xFF0000) >> 16) green:((hexRGB & 0x00FF00) >> 8) blue:(hexRGB & 0x0000FF) alpha:1.0f];
++ (NSColor *)colorWithHexRGB:(NSUInteger)hexRGB {
+    return [NSColor colorWithIntegerRed:((hexRGB & 0xFF0000) >> 16) green:((hexRGB & 0x00FF00) >> 8) blue:(hexRGB & 0x0000FF) alpha:1.0f];
 }
 
-+ (UIColor *)colorWithHexRGBString:(NSString*)hexRGBString {
++ (NSColor *)colorWithHexRGBString:(NSString*)hexRGBString {
     NSUInteger hexRGB = strtoul(([hexRGBString UTF8String] ?: ""), NULL, 16);
-    return [UIColor colorWithHexRGB: hexRGB];
+    return [NSColor colorWithHexRGB: hexRGB];
 }
 
-+ (UIColor *)colorWithHexRGBA:(NSUInteger)hexRGBA {
-    return [UIColor colorWithIntegerRed:((hexRGBA & 0xFF000000) >> 24) green:((hexRGBA & 0x00FF0000) >> 16) blue:((hexRGBA & 0x0000FF00) >> 8) alpha:(hexRGBA & 0x000000FF)/255.0f];
++ (NSColor *)colorWithHexRGBA:(NSUInteger)hexRGBA {
+    return [NSColor colorWithIntegerRed:((hexRGBA & 0xFF000000) >> 24) green:((hexRGBA & 0x00FF0000) >> 16) blue:((hexRGBA & 0x0000FF00) >> 8) alpha:(hexRGBA & 0x000000FF)/255.0f];
 }
 
-+ (UIColor *)colorWithHexRGBAString:(NSString*)hexRGBAString {
++ (NSColor *)colorWithHexRGBAString:(NSString*)hexRGBAString {
     if (hexRGBAString) {
         NSUInteger hexRGBA = strtoul(([hexRGBAString UTF8String] ?: ""), NULL, 16);
-        return [UIColor colorWithHexRGBA: hexRGBA];
+        return [NSColor colorWithHexRGBA: hexRGBA];
     } else {
         return nil;
     }

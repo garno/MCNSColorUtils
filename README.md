@@ -1,35 +1,33 @@
-# MCUIColorUtils - UIColor missing methods.
-[![Badge w/ Version](https://cocoapod-badges.herokuapp.com/v/MCUIColorUtils/badge.png)](https://cocoadocs.org/docsets/MCUIColorUtils)
-[![Badge w/ Platform](https://cocoapod-badges.herokuapp.com/p/MCUIColorUtils/badge.png)](https://cocoadocs.org/docsets/MCUIColorUtils)
+# MCNSColorUtils - NSColor missing methods.
 
-MCUIColorUtils extends [`UIColor`](http://developer.apple.com/library/ios/#documentation/UIKit/Reference/UIColor_Class/Reference/Reference.html)
+MCNSColorUtils extends [`NSColor`](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/ApplicationKit/Classes/NSColor_Class/Reference/Reference.html)
 to add some convenience methods.
 
 ## Using
 
 ```objective-c
-#import "UIColor+MCUIColorsUtils.h"
+#import "NSColor+MCNSColorsUtils.h"
 
 - (void)funWithColors
 {
 
   // Use colors straight from the web
-  [UIColor colorForHex:@"#fafbfc"];
+  [NSColor colorForHex:@"#fafbfc"];
 
   // ... if you prefer you can go with bytes
-  [UIColor colorWithHexRGB:0xfafbfc];
-  [UIColor colorWithHexRGBA:0xfafbfcff];
+  [NSColor colorWithHexRGB:0xfafbfc];
+  [NSColor colorWithHexRGBA:0xfafbfcff];
 
   // ...or with 0-255 values
-  [UIColor colorWithIntegerRed:250 green:251 blue:252];
-  [UIColor colorWithIntegerRed:250 green:251 blue:252 alpha:255];
+  [NSColor colorWithIntegerRed:250 green:251 blue:252];
+  [NSColor colorWithIntegerRed:250 green:251 blue:252 alpha:255];
 
   // ...or if all the channels are the same
-  [UIColor colorWithGray:0.980392157]; // 250/255=0.980392157
-  [UIColor colorWithIntegerGray:250];  // #fafafa
+  [NSColor colorWithGray:0.980392157]; // 250/255=0.980392157
+  [NSColor colorWithIntegerGray:250];  // #fafafa
 
   // Get a lighter color
-  UIColor color* = [UIColor colorForHex:@"#123456"];
+  NSColor color* = [NSColor colorForHex:@"#123456"];
   [color colorWithMultiplier:1.10]; // 110% of rgb channels
 
   // ... or a darker color
@@ -45,17 +43,17 @@ Add the following to your [`Podfile`](http://docs.cocoapods.org/podfile.html)
 and run `pod install`
 
 ```
-pod 'MCUIColorUtils', :git => 'https://github.com/mirego/MCUIColorUtils.git'
+pod 'MCNSColorUtils', :git => 'https://github.com/mirego/MCNSColorUtils.git'
 ```
 
-Don't forget to `#import "UIColor+MCUIColorsUtils.h"` where it's needed.
+Don't forget to `#import "NSColor+MCNSColorsUtils.h"` where it's needed.
 
 
 ## License
 
-MCUIColorUtils is © 2013 [Mirego](http://www.mirego.com) and may be freely
+MCNSColorUtils is © 2013 [Mirego](http://www.mirego.com) and may be freely
 distributed under the [New BSD license](http://opensource.org/licenses/BSD-3-Clause).
-See the [`LICENSE.md`](https://github.com/mirego/MCUIColorUtils/blob/master/LICENSE.md) file.
+See the [`LICENSE.md`](https://github.com/mirego/MCNSColorUtils/blob/master/LICENSE.md) file.
 
 ## About Mirego
 
